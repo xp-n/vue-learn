@@ -1,7 +1,7 @@
 <template>
   <div class="category">
     <h2>{{title}}分类</h2>
-    ......
+    ...
   </div>
 </template>
 
