@@ -1,6 +1,9 @@
 <template>
   <div>
-    <h1>当前求和为:{{$store.state.sum}}</h1>
+    <h1>当前求和为:{{sum}}</h1>
+    <h1>当前10倍求和为:{{bigSum}}</h1>
+    <h1>学校:{{school}}</h1>
+    <h1>学科:{{subject}}</h1>
     <select name="" id="" v-model.number="n">
       <option value="1">1</option>
       <option value="2">2</option>
@@ -14,10 +17,10 @@
 </template>
 
 <script>
+  import { mapState, mapGetters } from 'vuex'
   export default {
     data() {
       return {
-        sum: 0,
         n: 1
       }
     },
@@ -37,7 +40,30 @@
     mounted() { 
       console.log('count',this)
     }
-  }
+    },
+    computed: {
+      // sum() {
+      //   return this.$store.state.sum
+      // },
+      // school() {
+      //   return this.$store.state.school
+      // },
+      // subject() {
+      //   return this.$store.state.subject
+      // },
+
+      //注意此处不能用简写形式,因为value为字符串而非变量
+      // ...mapState({sum:'sum', school: 'school', subject: 'subject'}), //...为es6语法，用于将对象中的每一个key value展开显示
+      //简写形式
+      ...mapState(['sum', 'school', 'subject']),
+      
+      // bigSum() {
+      //   return this.$store.getters.bigSum
+      // }
+
+      // ...mapGetters({bigSum:'bigSum'}),
+      ...mapGetters(['bigSum'])
+    }
   }
 </script>
 <style>

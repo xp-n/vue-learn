@@ -7,6 +7,7 @@ const actions = {
   jia(context, value) {
     console.log('action的jia被调用了')
     context.commit('JIA', value)
+    // context.dispatch(...) 可继续dispatch
   },
   jian(context, value) {
     console.log('action的jian被调用了')
@@ -36,11 +37,18 @@ const mutations = {
   }
 }
 const state = {
-  sum: 0
+  sum: 0,
+  school: 'atguigu',
+  subject: 'computer'
 }
-
+const getters = {
+  bigSum(state) {
+    return state.sum * 10
+  }
+}
 export default new Vuex.Store({
   actions,
   mutations,
-  state
+  state,
+  getters
 })
